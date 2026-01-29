@@ -24,16 +24,19 @@ function normalize(str) {
 function addTask(title, tag) {
   const t = { id: crypto.randomUUID(), title: title.trim(), tag, status: "backlog" };
   tasks.unshift(t);
+    saveTasks();
   render();
 }
 
 function removeTask(id) {
   tasks = tasks.filter(t => t.id !== id);
+    saveTasks();
   render();
 }
 
 function toggleDone(id) {
   tasks = tasks.map(t => (t.id === id ? { ...t, status: t.status === "done" ? "backlog" : "done" } : t));
+    saveTasks();
   render();
 }
 
@@ -96,6 +99,18 @@ function escapeHTML(str) {
     .replaceAll("'", "&#039;");
 }
 
+function saveTasks() {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+function loadTasks() {
+
+    const saved = localStorage.getItem("tasks");
+    if (saved) {
+        tasks = JSON.parse(saved);
+    }
+}
+
 // Handlers
 els.form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -124,5 +139,5 @@ els.seed.addEventListener("click", () => {
   ];
   seed.forEach(s => addTask(s.title, s.tag));
 });
-
+loadTasks();
 render();
