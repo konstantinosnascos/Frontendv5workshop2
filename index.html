@@ -24,12 +24,13 @@
           <input id="taskTitle" class="input" type="text" placeholder="t.ex. Skapa en PR" required />
 
           <label class="label" for="taskTag">Tag</label>
-          <select id="taskTag" class="input">
-            <option value="feature">feature</option>
-            <option value="bug">bug</option>
-            <option value="docs">docs</option>
-            <option value="chore">chore</option>
-          </select>
+          <input id="taskTag" class="input" type="text" placeholder="tex feature, bug, docs" list="tagOptions"/>
+            <datalist id="tagOptions">
+              <option value="feature">feature</option>
+              <option value="bug">bug</option>
+              <option value="docs">docs</option>
+              <option value="chore">chore</option>
+            </datalist>
 
           <button class="btn" type="submit">Lägg till</button>
         </form>
