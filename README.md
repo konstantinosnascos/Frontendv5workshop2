@@ -17,7 +17,7 @@ En minimal frontend (HTML/CSS/JS) för att öva **GitHub Flow** med:
 - Add localStorage persistence
 - Add keyboard accessibility
 - Add dark mode toggle
-Hejhej
+
 
 ## workflow steps.
 
